@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assessment2RecruitmentAgency"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Background="LightGray">
             <Label Content="New Contractor" FontWeight="Bold" Background="#FF7693ED" FontSize="10" HorizontalContentAlignment="Center"/>
@@ -81,8 +81,12 @@
                 </TextBlock>
             </Button>
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" >
+            <TextBlock Text="Assign jobs: Please choose an available contractor and an unassigned job and click on the assign button" MaxWidth="320" TextWrapping="Wrap" IsEnabled="False" Background="#FFFDFDFD" Margin="8" />
+            <Button x:Name="ButtonAssign" Content="Assign" Background="#FFFB1F65" FontWeight="Bold" Margin="3" Width="101" Click="ButtonAssign_Click" Height="25" FontSize="10"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"  >
-            <Button x:Name="ButtonAssign" Content="Assign" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="50" Click="ButtonAssign_Click" Height="40" FontSize="10"/>
+            
             <Button x:Name="ButtonComplete" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="60" Click="ButtonComplete_Click" Height="40" FontSize="10">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     Mark Complete
@@ -104,5 +108,6 @@
             <TextBox x:Name="TextBoxMaxCost" Text="Max Cost" VerticalAlignment="Center" Margin="5" Width="50" Height="25" VerticalContentAlignment="Center" FontSize="10" GotFocus="TextBoxMaxCost_GotFocus" LostFocus="TextBoxMaxCost_LostFocus" />
             <Button x:Name="ButtonSortJobsByCost" Content="Search job by cost" Background="#FFFB1F65" FontWeight="Bold" Margin="5" Width="101" FontSize="10" Height="25" Click="ButtonSortJobsByCost_Click"/>
         </StackPanel>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="-290,254,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
