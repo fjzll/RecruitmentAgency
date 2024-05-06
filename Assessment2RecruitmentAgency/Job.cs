@@ -14,7 +14,7 @@ namespace Assessment2RecruitmentAgency
 
         //Properties
         public string JobTitle { get; set; }
-        public DateTime JobDate { get; set; }
+        public string JobDate { get; set; }
         public decimal JobCost { get; set; }
         public JobStatus JobCompleted { get; set; }
         public string ContractorName { get; set; }
@@ -29,7 +29,7 @@ namespace Assessment2RecruitmentAgency
         public Job(string jobTitle, DateTime jobDate, decimal jobCost)
         {
             JobTitle = jobTitle;
-            JobDate = jobDate;
+            JobDate = jobDate.ToString("d");
             JobCost = jobCost;
             JobCompleted = JobStatus.Unassigend;
             ContractorName = "";

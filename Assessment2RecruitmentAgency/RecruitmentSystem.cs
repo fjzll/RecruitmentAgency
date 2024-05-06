@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Assessment2RecruitmentAgency
 {
@@ -72,11 +73,16 @@ namespace Assessment2RecruitmentAgency
         //Mark job as complete and return the assigned contractor back to "available"
         public void CompleteJob(Job job)
         {
-            job.JobCompleted = Job.JobStatus.Completed;
-            if (job.AssignedContractor != null)
+            if (job.JobCompleted == Job.JobStatus.Unassigend)
             {
+                MessageBox.Show("Unable to mark an assigend job complete!");
+            }
+            else
+            {
+                job.JobCompleted = Job.JobStatus.Completed;
                 job.AssignedContractor.Status = Contractor.ContractorStatus.Available;
-            }        
+            }
+                 
         }
 
         //Get the list of all contractors

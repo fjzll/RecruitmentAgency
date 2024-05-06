@@ -13,101 +13,97 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Background="LightGray">
-            <Label Content="New Contractor" FontWeight="Bold" Background="#FF7693ED" FontSize="10" HorizontalContentAlignment="Center"/>
-            <Label Content="First Name:" FontSize="8"/>
-            <TextBox x:Name="TextboxFirstName" Text="" />
-            <Label Content="Last Name:" FontSize="8" />
-            <TextBox x:Name="TextboxLastName" Text="" />
-            <Label Content="Hourly Wage:" FontSize="8" />
-            <TextBox x:Name="TextboxHourlyWage" Text=""/>
-            <Button x:Name="ButtonAdd" Content="Add" Background="#FF7693ED" FontWeight="Bold" Click="ButtonAdd_Click" FontSize="10"/>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Top" Background="LightGray">
+            <Label Content="New Contractor" Height="50" FontWeight="Bold" Background="#FF7693ED" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="First Name:" FontSize="18"/>
+            <TextBox x:Name="TextboxFirstName" Text="" Height="40" FontSize="18" />
+            <Label Content="Last Name:" FontSize="18" />
+            <TextBox x:Name="TextboxLastName" Text="" Height="40" FontSize="18" />
+            <Label Content="Hourly Wage:" FontSize="18" />
+            <TextBox x:Name="TextboxHourlyWage" Text="" Height="40" FontSize="18" />
+            <Button x:Name="ButtonAdd" Content="Add" Height="50" Background="#FF7693ED" FontWeight="Bold" Click="ButtonAdd_Click" FontSize="18"/>
 
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Background="LightGray" VerticalAlignment="Top" >
-            <Label Content="New Job" FontWeight="Bold" HorizontalContentAlignment="Center" Background="#FFEDB276" FontSize="10"/>
-            <Label Content="Job Title:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="8"  />
-            <TextBox x:Name="TextboxJobTitle" Text="" VerticalAlignment="Top"/>
-            <Label Content="Job Cost:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="8" />
-            <TextBox x:Name="TextboxJobCost" Text="" VerticalAlignment="Top"/>
-            <Label Content="Job Date:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="8" />
-            <DatePicker x:Name="JobDate" />
-            <Button x:Name="ButtonCreateJobs" Content="Create" Background="#FFEDB276" FontSize="10" FontWeight="Bold" Click="ButtonCreateJobs_Click"/>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Background="LightGray" VerticalAlignment="Top" >
+            <Label Content="New Job" FontWeight="Bold" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFEDB276" FontSize="18"/>
+            <Label Content="Job Title:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"  />
+            <TextBox x:Name="TextboxJobTitle" Text="" VerticalAlignment="Top" Height="40" FontSize="18" />
+            <Label Content="Job Cost:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" />
+            <TextBox x:Name="TextboxJobCost" Text="" VerticalAlignment="Top" Height="40" FontSize="18" />
+            <Label Content="Job Date:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" />
+            <DatePicker x:Name="JobDateDatePicker" FontSize="18" Height="40" DateValidationError="JobDateDatePicker_DateValidationError" />
+            <Button x:Name="ButtonCreateJobs" Height="50" Content="Create" Background="#FFEDB276" FontSize="18" FontWeight="Bold" Click="ButtonCreateJobs_Click"/>
 
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-            <Label Content="Contractor List" Background="#FF7693ED" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="10" BorderBrush="Black" />
-            <ListView x:Name="ListContractors" ItemsSource="{Binding Contractors}" Grid.RowSpan="2" BorderBrush="#FF0A0B0C" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Fisrt Name" DisplayMemberBinding="{Binding FirstName}" Width="70"/>
-                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="70"/>
-                        <GridViewColumn Header="Hourly Wage" DisplayMemberBinding="{Binding HourlyWage}" Width="80"/>
-                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="40"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
-            <Label Content="Job List" Background="#FFEDB276" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="10" BorderBrush="Black" />
-            <ListView x:Name="ListJobs" ItemsSource="{Binding Jobs}" Grid.Column ="2" Grid.Row="0" Grid.RowSpan="2"  BorderBrush="#FF0A0B0C" >
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Job" DisplayMemberBinding="{Binding JobTitle}" Width="40"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding JobDate}" Width="40" />
-                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding JobCost}" Width="40" />
-                        <GridViewColumn Header="Completed" DisplayMemberBinding="{Binding JobCompleted}" Width="60"/>
-                        <GridViewColumn Header="Contractor" DisplayMemberBinding="{Binding ContractorName}" Width="70"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
-            <Button x:Name="ButtonRemove" Content="Remove" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="70" Click="ButtonRemove_Click" Height="40" FontSize="10"/>
-            <Button x:Name="ButtonAllContractors" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="70" Click="ButtonAllContractors_Click" Height="40" FontSize="10">
+        <Label Content="Contractor List" Grid.Column="1" Background="#FF7693ED" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="18" BorderBrush="Black" />
+        <ListView x:Name="ListContractors" ItemsSource="{Binding Contractors}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="#FF0A0B0C" ScrollViewer.VerticalScrollBarVisibility ="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Fisrt Name" DisplayMemberBinding="{Binding FirstName}" Width="80"/>
+                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="80"/>
+                    <GridViewColumn Header="Hourly Wage" DisplayMemberBinding="{Binding HourlyWage}" Width="100"/>
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Job List" Background="#FFEDB276" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="18" BorderBrush="Black" />
+        <ListView x:Name="ListJobs" ItemsSource="{Binding Jobs}" Grid.Column ="2" Grid.Row="1" Grid.RowSpan="2"  BorderBrush="#FF0A0B0C" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Job" DisplayMemberBinding="{Binding JobTitle}" Width="80"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding JobDate}" Width="80" />
+                    <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding JobCost}" Width="60" />
+                    <GridViewColumn Header="Completed" DisplayMemberBinding="{Binding JobCompleted}" Width="100"/>
+                    <GridViewColumn Header="Contractor" DisplayMemberBinding="{Binding ContractorName}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
+            <Button x:Name="ButtonRemove" Content="Remove" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="100" Click="ButtonRemove_Click" Height="40" FontSize="14"/>
+            <Button x:Name="ButtonAllContractors" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="100" Click="ButtonAllContractors_Click" Height="40" FontSize="14">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     View All contractors
                 </TextBlock>
             </Button>
-            <Button x:Name="ButhatonAvailableContractors" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="70" Click="ButtonAvailableContractors_Click" Height="40" FontSize="10">
+            <Button x:Name="ButhatonAvailableContractors" Background="#FF7693ED" FontWeight="Bold" Margin="5" Width="100" Click="ButtonAvailableContractors_Click" Height="40" FontSize="14">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     Available contractors
                 </TextBlock>
             </Button>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" >
-            <TextBlock Text="Assign jobs: Please choose an available contractor and an unassigned job and click on the assign button" MaxWidth="320" TextWrapping="Wrap" IsEnabled="False" Background="#FFFDFDFD" Margin="8" />
-            <Button x:Name="ButtonAssign" Content="Assign" Background="#FFFB1F65" FontWeight="Bold" Margin="3" Width="101" Click="ButtonAssign_Click" Height="25" FontSize="10"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" >
+            <TextBlock Text="Assign jobs: Please choose an available contractor and an unassigned job and click on the assign button" MaxWidth="320" TextWrapping="Wrap" IsEnabled="False" Background="#FFFDFDFD" Margin="8" FontSize="12" />
+            <Button x:Name="ButtonAssign" Content="Assign" Background="#FFFB1F65" FontWeight="Bold" Margin="3" Width="101" Click="ButtonAssign_Click" Height="25" FontSize="14"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"  >
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  >
             
-            <Button x:Name="ButtonComplete" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="60" Click="ButtonComplete_Click" Height="40" FontSize="10">
+            <Button x:Name="ButtonComplete" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="100" Click="ButtonComplete_Click" Height="40" FontSize="14">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     Mark Complete
                 </TextBlock>
             </Button>
-            <Button x:Name="ButtonAllJobs" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="60" Click="ButtonAllJobs_Click" Height="40" FontSize="10">
+            <Button x:Name="ButtonAllJobs" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="100" Click="ButtonAllJobs_Click" Height="40" FontSize="14">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     View All jobs
                 </TextBlock>
             </Button>
-            <Button x:Name="ButtonUnassignedJobs" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="70" Click="ButtonUnassignedJobs_Click" Height="40" FontSize="10">
+            <Button x:Name="ButtonUnassignedJobs" Background="#FFEDB276" FontWeight="Bold" Margin="3" Width="100" Click="ButtonUnassignedJobs_Click" Height="40" FontSize="14">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">
                     Unassigned jobs
                 </TextBlock>
             </Button>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" >
-            <TextBox x:Name="TextBoxMinCost" Text="Min Cost" VerticalAlignment="Center" Margin="5" Width="50" Height="25" VerticalContentAlignment="Center" FontSize="10" GotFocus="TextBoxMinCost_GotFocus" LostFocus="TextBoxMinCost_LostFocus" />
-            <TextBox x:Name="TextBoxMaxCost" Text="Max Cost" VerticalAlignment="Center" Margin="5" Width="50" Height="25" VerticalContentAlignment="Center" FontSize="10" GotFocus="TextBoxMaxCost_GotFocus" LostFocus="TextBoxMaxCost_LostFocus" />
-            <Button x:Name="ButtonSortJobsByCost" Content="Search job by cost" Background="#FFFB1F65" FontWeight="Bold" Margin="5" Width="101" FontSize="10" Height="25" Click="ButtonSortJobsByCost_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" >
+            <TextBox x:Name="TextBoxMinCost" Text="Min Cost" VerticalAlignment="Center" Margin="5" Width="80" Height="25" VerticalContentAlignment="Center" FontSize="14" GotFocus="TextBoxMinCost_GotFocus" LostFocus="TextBoxMinCost_LostFocus" />
+            <TextBox x:Name="TextBoxMaxCost" Text="Max Cost" VerticalAlignment="Center" Margin="5" Width="80" Height="25" VerticalContentAlignment="Center" FontSize="14" GotFocus="TextBoxMaxCost_GotFocus" LostFocus="TextBoxMaxCost_LostFocus" />
+            <Button x:Name="ButtonSortJobsByCost" Content="Search job by cost" Background="#FFFB1F65" FontWeight="Bold" Margin="5" Width="125" FontSize="14" Height="25" Click="ButtonSortJobsByCost_Click"/>
         </StackPanel>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="-290,254,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

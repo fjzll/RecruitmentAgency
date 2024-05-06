@@ -44,7 +44,7 @@ namespace Assessment2RecruitmentAgency
                 return;
             }
             decimal hourlyWage = 0;
-            if(!decimal.TryParse(TextboxHourlyWage.Text, out hourlyWage))
+            if(!decimal.TryParse(TextboxHourlyWage.Text, out hourlyWage) || hourlyWage <= 0)
             {
                 MessageBox.Show("Please enter a valid hourly wage!");
                 return;
@@ -87,14 +87,14 @@ namespace Assessment2RecruitmentAgency
             }
 
             decimal jobCost = 0;
-            if(!decimal.TryParse(TextboxJobCost.Text, out jobCost))
+            if(!decimal.TryParse(TextboxJobCost.Text, out jobCost) || jobCost <= 0)
             {
                 MessageBox.Show("Please enter a valid cost!");
                 return;
             }
 
             DateTime jobDate;
-            if (JobDate.SelectedDate.HasValue) { jobDate = JobDate.SelectedDate.Value; }
+            if (JobDateDatePicker.SelectedDate.HasValue) { jobDate = JobDateDatePicker.SelectedDate.Value; }
             else { jobDate = DateTime.Today; }
 
             Job newJob = new Job(TextboxJobTitle.Text, jobDate, jobCost);
@@ -104,7 +104,7 @@ namespace Assessment2RecruitmentAgency
             ListJobs.ItemsSource= newRecruitmentSystem.Jobs;
             TextboxJobTitle.Clear();
             TextboxJobCost.Clear();
-            JobDate.SelectedDate = null;
+            JobDateDatePicker.SelectedDate = null;
 
         }
 
@@ -238,5 +238,9 @@ namespace Assessment2RecruitmentAgency
             }
         }
 
+        private void JobDateDatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
+        {
+            MessageBox.Show("Please enter a valid date!");
+        }
     }
 }
