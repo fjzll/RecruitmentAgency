@@ -75,7 +75,7 @@ namespace Assessment2RecruitmentAgency
         {
             if (job.JobCompleted == Job.JobStatus.Unassigend)
             {
-                MessageBox.Show("Unable to mark an assigend job complete!");
+                throw new InvalidOperationException("Unable to mark an unassigned job as complete!");
             }
             else
             {

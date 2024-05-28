@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 namespace Assessment2RecruitmentAgency
 {
     /// <summary>
+    /// Lili Zheng Assessement 2 Recruitment Agency Project
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
@@ -113,11 +114,19 @@ namespace Assessment2RecruitmentAgency
         {
             if (ListJobs.SelectedItem is Job selectedJob && selectedJob.JobCompleted != Job.JobStatus.Completed)
             {
-                newRecruitmentSystem.CompleteJob(selectedJob);
-                ListContractors.ItemsSource = null;
-                ListContractors.ItemsSource = newRecruitmentSystem.Contractors;
-                ListJobs.ItemsSource = null;
-                ListJobs.ItemsSource = newRecruitmentSystem.Jobs;
+                try
+                {
+                    newRecruitmentSystem.CompleteJob(selectedJob);
+                    ListContractors.ItemsSource = null;
+                    ListContractors.ItemsSource = newRecruitmentSystem.Contractors;
+                    ListJobs.ItemsSource = null;
+                    ListJobs.ItemsSource = newRecruitmentSystem.Jobs;
+                }
+                catch(InvalidOperationException ex) 
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
             else
             {
@@ -171,6 +180,7 @@ namespace Assessment2RecruitmentAgency
             ListContractors.ItemsSource = availableContractorList;
         }
 
+        //Show all jobs when ButtonAllJobs is clicked
         private void ButtonAllJobs_Click(object sender, RoutedEventArgs e)
         {
             List<Job> allJobList = newRecruitmentSystem.GetJobs();
@@ -178,6 +188,7 @@ namespace Assessment2RecruitmentAgency
             ListJobs.ItemsSource = allJobList;
         }
 
+        //Show unassigned jobs when ButtonUnassignedJobs is clicked
         private void ButtonUnassignedJobs_Click(object sender, RoutedEventArgs e)
         {
             List<Job> unassignedJobList = newRecruitmentSystem.GetUnassignedJobs();
@@ -185,6 +196,7 @@ namespace Assessment2RecruitmentAgency
             ListJobs.ItemsSource= unassignedJobList;
         }
 
+        //Function to search completed jobs by cost when Search jobs by cost button is clicked
         private void ButtonSortJobsByCost_Click(object sender, RoutedEventArgs e)
         {
             if (decimal.TryParse(TextBoxMinCost.Text, out decimal minCost) && decimal.TryParse(TextBoxMaxCost.Text, out decimal maxCost))
@@ -211,11 +223,14 @@ namespace Assessment2RecruitmentAgency
             }
         }
 
+        //Clear text box when user clicks on the text box to enter min cost
         private void TextBoxMinCost_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxMinCost.Clear();
         }
 
+        //Show the default "Min Cost" for TextBoxMinCost when user does not click nor enter anything
+        //in the text box.
         private void TextBoxMinCost_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TextBoxMinCost.Text))
@@ -225,11 +240,14 @@ namespace Assessment2RecruitmentAgency
 
         }
 
+        //Clear text box when user clicks on the text box to enter max cost
         private void TextBoxMaxCost_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxMaxCost.Clear();
         }
 
+        //Show the default "Max Cost" for TextBoxMaxCost when user does not click nor enter anything
+        //in the text box
         private void TextBoxMaxCost_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TextBoxMaxCost.Text))
@@ -238,6 +256,7 @@ namespace Assessment2RecruitmentAgency
             }
         }
 
+        //Pop up the error messge when invalid date is entered
         private void JobDateDatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
         {
             MessageBox.Show("Please enter a valid date!");

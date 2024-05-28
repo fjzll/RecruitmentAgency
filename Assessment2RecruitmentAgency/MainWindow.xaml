@@ -20,7 +20,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Top" Background="LightGray">
-            <Label Content="New Contractor" Height="50" FontWeight="Bold" Background="#FF7693ED" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="New Contractor" Height="50" FontWeight="Bold" Background="#FF7693ED" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <Label Content="First Name:" FontSize="18"/>
             <TextBox x:Name="TextboxFirstName" Text="" Height="40" FontSize="18" />
             <Label Content="Last Name:" FontSize="18" />
